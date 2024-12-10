@@ -2,26 +2,72 @@
 ![Logo](https://i.ibb.co/9wBYq0C/Screenshot-2024-12-08-204044.png)
 
 
-# 8031A_HighVoltageCode
+# 📢 8031A High Voltage - 2024 "High Stakes" Code Repository
 
-This is our robot's code for 2024 High Stakes it's made in C++ with pros and EZ template. We use Git and GitHub to control the version of our code. This helps us keep our code organized and makes it easy if we ever need to restore an old code version. This, lets us manage all of our code versions and backs up our code to the cloud just in case something happens to it. It is extremely, helpful and makes our coding process much faster and more convenient.
+Welcome to 8031A High Voltage's official codebase for the 2024 VEX Robotics "High Stakes" competition. This repository contains the source code for our robot, written in C++ using the PROS development environment and the EZ Template.
+
+We use Git and GitHub for version control, which allows us to:
+
+- Keep our code well-organized.
+- Easily revert to previous versions if issues arise.
+- Back up our work in the cloud to prevent data loss.
+This system makes our coding process faster, more efficient, and collaborative. 🚀
 
 
-## Features
-
-- Ring dectection with color sensor
-- PID implimented to be accurate and percise
-- Use of sensors including: Vision, Inertial, Rotation, and Distance
 
 
-## FAQ
+## 🚀 Key Features
 
-#### Are the programs cleanly written, well commented, and easy to follow?
+- Ring Detection: Uses a color sensor to identify and categorize rings for precision placement.
+- PID Control: Ensures accurate and consistent movement of motors for precise alignment and control.
+- Sensor Integration: Uses a combination of the following sensors for enhanced performance:
+  - Vision Sensor for object detection.
+  - Inertial Sensor for orientation tracking.
+  - Rotation Sensor for position accuracy.
+  - Distance Sensor for obstacle detection.
 
-Yes the code is very clean organised, I always make sure I comment almost evry line of code so me and my team knows what it does. It is pretty easy to follow it is seperated into a couple of files one for main, autons, globals, and helpers. These make our code well organised and easy to navigate.
 
-#### Is the programing effective at solving game challenges for both Qualification Matches and Autonomous Coding Skills Challenge matches?
+## 📚 File Structure
 
-Yes the programming is pretty effective at both of the Qualification Matches and the Autonomous Coding Skills Challenge Matches. For Qualification Matches we determined what would get us the most points in the least amount of time and would get us the Autonomous win point. Our Autonomous scores a ring on the alliance wall stake, scores two rings on a mobile goal, and touches the center ladder. Giving us the solo win point so we get it every game. It works for all four corners of the field with little to no error.
+Here's how we've organized our project files to keep things clean and maintainable:
 
+📂 src/  
+  ┣ 📜 main.cpp           // Main entry point for our robot's code  
+  ┣ 📜 autons.cpp         // Autonomous routines for all field positions  
+  ┣ 📜 globals.cpp        // Global variables and constants  
+  ┗ 📜 helpers.cpp        // Reusable helper functions for code efficiency  
+
+📂 include/  
+  ┣ 📜 globals.hpp       // Header file for global variables and constants  
+  ┗ 📜 helpers.hpp       // Header file for helper functions  
+
+📂 docs/                // Documentation and notes for the codebase  
+📂 tests/               // Test scripts and prototypes for new features    
+
+## 💡 FAQ (Frequently Asked Questions)
+
+#### 1️⃣ Are the programs cleanly written, well-commented, and easy to follow?
+
+Yes, our code is clean, organized, and well-commented. We make sure every key section of the code is properly explained with comments, so both new and experienced team members can understand it. Our file structure separates the main logic, autonomous routines, global variables, and reusable helper functions. This makes the code easy to maintain and navigate.
+
+#### 2️⃣ Is the programming effective at solving game challenges for Qualification Matches and Autonomous Skills Challenges?
+
+Absolutely. Our code is designed to handle both Qualification Matches and the Autonomous Skills Challenge.
+
+Qualification Matches: We prioritize the most efficient scoring path to maximize points and secure the autonomous win point.
+Autonomous Skills: Our robot is capable of scoring a ring on the alliance wall stake, placing two rings on a mobile goal, and touching the center ladder, all within a consistent and reliable routine. This program works for all four starting positions on the field with minimal error.
+
+
+
+## 📈 Version Control with GitHub
+
+How we use GitHub for version control:
+
+Feature Branches: Every new feature or change starts in a new branch (like feature/PID-tuning).
+Pull Requests & Code Reviews: Code is reviewed before being merged into the main branch to ensure it works properly.
+Release Tags: We tag stable versions (like v1.0.0) to track our progress over time.
+You can check our commit history to see the evolution of our code and how we've solved key challenges. This approach ensures stability, efficiency, and teamwork.
+## 📲 Contact Us
+
+For any questions or inquiries, feel free to reach out to Team 8031A High Voltage on our Instagram. We’re always excited to share our journey and learn from others!
 
