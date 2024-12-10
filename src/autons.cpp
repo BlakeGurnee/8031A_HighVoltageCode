@@ -331,7 +331,6 @@ void soloWp() //Scores 1 ring on alliance wall stake and 2 rings on alliance mob
   chassis.pid_drive_set(10_in, DRIVE_SPEED, true); // Drive forwards
   chassis.pid_wait(); // wait for pid
 
-  
 }
 void skills() //Auton for skills matches
 {
