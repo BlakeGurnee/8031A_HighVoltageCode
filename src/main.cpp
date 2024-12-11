@@ -118,7 +118,7 @@ void autonomous() {
 
   chassis.drive_sensor_reset();               // Reset drive sensors to 0
   chassis.drive_brake_set(MOTOR_BRAKE_HOLD);  // Set motors to hold.  This helps autonomous consistency
-  setCombine(0);
+  setIntake(0);
   
   ez::as::auton_selector.selected_auton_call();  // Calls selected auton from autonomous selector
 }
@@ -153,9 +153,6 @@ void opcontrol() {
   pros::motor_brake_mode_e_t driver_preference_brake = MOTOR_BRAKE_COAST;
 
   chassis.drive_brake_set(driver_preference_brake);
-
-
- 
 
   while (true) {
      //detect_ring();  // Call the detection function continuously in operator control
@@ -197,39 +194,20 @@ void opcontrol() {
 
     if (master.get_digital(DIGITAL_DOWN))
     {
-      setCombine(127);
+      setIntake(127);
     }
     else if (master.get_digital(DIGITAL_UP))
     {
-      setCombine(-127);
+      setIntake(-127);
     }
     else if (master.get_digital(DIGITAL_RIGHT))
     {
-      setCombine(0);
+      setIntake(0);
     }
-
-   if (master.get_digital(DIGITAL_L1)) 
-   {
-    setFlap(-127);
-    pros::delay(500);
-    setFlap(0);
-   }
-    
-   else if (master.get_digital(DIGITAL_L2))
-   {
-    setFlap(127);
-    pros::delay(500);
-    setFlap(0);
-   }
 
     if (master.get_digital_new_press(DIGITAL_R1))
     {
       clamp1.toggle();
-    }
-
-    if (master.get_digital_new_press(DIGITAL_LEFT))
-    {
-      arm.toggle();
     }
  
     // . . .

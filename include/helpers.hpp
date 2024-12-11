@@ -1,6 +1,5 @@
 #include "main.h"
 
-void setCombine(int combinePower);
-void setFlap(int flapPower);
+void setIntake(int IntakePower);
 
 void clampSwitch();

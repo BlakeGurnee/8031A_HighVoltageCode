@@ -1,15 +1,10 @@
 #include "main.h"
 
-void setCombine(int combinePower) 
+void setIntake(int intakePower) 
 {
-    combine.move(combinePower);
-    combine2.move(combinePower);
+    combine.move(intakePower);
+    hooks.move(intakePower);
 }
-void setFlap(int flapPower)
-{
-  flap.move(flapPower);
-}
-
 
 void clampSwitch()
 {
@@ -20,17 +15,5 @@ void clampSwitch()
  else
   {
     clamp1.extend();
-  }
-}
-
-void armSwitch()
-{
- if (arm.is_extended())
-  {
-    arm.retract();
-  }
- else
-  {
-    arm.extend();
   }
 }

@@ -36,9 +36,6 @@ void default_constants() {
 void redLeftSide() // 4 ring
 {
   const int DRIVE_SPEED = 70;
-  // Spin flap forward initially
-  setFlap(127);
-  pros::delay(250);  // Wait for the action
 
   // Drive forward 30 inches
   chassis.pid_drive_set(-30_in, DRIVE_SPEED, true);
@@ -48,53 +45,17 @@ void redLeftSide() // 4 ring
   pros::delay(350); // wait 350 miliseconds
 
   // spin combine motor forward at max speed
-  setCombine(-127);
-  pros::delay(1000); // wait 1000 miliseconds
+  setIntake(-127);
 
-  
-  setFlap(-127); // Swing flap
-  pros::delay(500); // wait 500 miliseconds
-  setFlap(127); // Swing flap
-  pros::delay(500);// wait 500 miliseconds
-  setFlap(-127); // Swing flap
-  pros::delay(500);// wait 500 miliseconds
-  // Flap forward, combine reverse, and turn 180 degrees
-  setFlap(127); // swing flap up
-  setCombine(-127); //spin combine forward at full speed
+  setIntake(-127); //spin combine forward at full speed
   chassis.pid_turn_set(-285_deg, TURN_SPEED); // turn -285 degrees
   chassis.pid_wait(); // wait for pid
 
   // Drive forward 28 inches
   chassis.pid_drive_set(28_in, DRIVE_SPEED, true);
   chassis.pid_wait(); // wait for pid
-    
-
-  setFlap(-127); //swing flap down
-  pros::delay(250);// wait 250 miliseconds
-  setFlap(127);//swing flap up
-  pros::delay(250);// wait 250 miliseconds
-  setFlap(-127);//swing flap down
-  setFlap(0); // set flap to 0
-  pros::delay(250); // wait 250 miliseconds
-  setFlap(127);//swing flap up
 
   DRIVE_SPEED == 95; // set drive speed to 95
-
-  setFlap(-127);
-  pros::delay(250);
-  setFlap(127);
-  pros::delay(250);
-  setFlap(-127);
-  pros::delay(250);
-  setFlap(127);
-  pros::delay(250);
-  setFlap(-127);
-  pros::delay(250);
-  setFlap(127);
-  pros::delay(250);
-  setFlap(-127);
-  pros::delay(250);
-  setFlap(127);
 
   chassis.pid_turn_set(-108_deg, TURN_SPEED);
   chassis.pid_wait();
@@ -106,66 +67,25 @@ void redLeftSide() // 4 ring
 void redRightSide() // Auton for right (or far) side of the field scores 2 rings on mobile goal and touches the ladder
 {
   const int DRIVE_SPEED = 70;
-  // Spin flap forward initially
-  setFlap(127);
-  pros::delay(250);  // Wait for the action
 
   // Drive forward 30 inches
   chassis.pid_drive_set(-30_in, DRIVE_SPEED, true);
   chassis.pid_wait();
 
-   clamp1.extend();  
-   pros::delay(350);
-  // Reverse combine motor
-  setCombine(-127);
-  pros::delay(1000);
-
-  // Reverse flap for 1 second  
-  setFlap(-127);
-  pros::delay(500);
-  setFlap(127);
-  pros::delay(500);
-  setFlap(-127);
-  pros::delay(500);
-
-  // Flap forward, combine reverse, and turn 180 degrees
-  setFlap(127);
-  setCombine(-127);
+  clamp1.extend();  
+  pros::delay(350);
+ // Reverse combine motor
+  setIntake(-127);
+ 
+  setIntake(-127);
   chassis.pid_turn_set(285_deg, TURN_SPEED);
   chassis.pid_wait();
 
   // Drive forward 28 inches
   chassis.pid_drive_set(28_in, DRIVE_SPEED, true);
   chassis.pid_wait();
-    
-
-  // Reverse flap briefly, then toggle directions
-  setFlap(-127);
-  pros::delay(250);
-  setFlap(127);
-  pros::delay(250);
-  setFlap(-127);
-  setFlap(0);
-  pros::delay(250);
-  setFlap(127);
 
   DRIVE_SPEED == 95;
-
-  setFlap(-127);
-  pros::delay(250);
-  setFlap(127);
-  pros::delay(250);
-  setFlap(-127);
-  pros::delay(250);
-  setFlap(127);
-  pros::delay(250);
-  setFlap(-127);
-  pros::delay(250);
-  setFlap(127);
-  pros::delay(250);
-  setFlap(-127);
-  pros::delay(250);
-  setFlap(127);
 
    chassis.pid_turn_set(110_deg, TURN_SPEED);
    chassis.pid_wait();
@@ -177,10 +97,6 @@ void redRightSide() // Auton for right (or far) side of the field scores 2 rings
 void blueLeftSide()
 {
   const int DRIVE_SPEED = 70;
-    // Spin flap forward initially
-    setFlap(127);
-    pros::delay(250);  // Wait for the action
-
     // Drive forward 30 inches
     chassis.pid_drive_set(-30_in, DRIVE_SPEED, true);
     chassis.pid_wait();
@@ -189,55 +105,18 @@ void blueLeftSide()
     pros::delay(350);
 
     // Reverse combine motor
-    setCombine(-127);
-    pros::delay(1000);
-
-    // Reverse flap for 1 second
-    setFlap(-127);
-    pros::delay(500);
-    setFlap(127);
-    pros::delay(500);
-    setFlap(-127);
-    pros::delay(500);
+    setIntake(-127);
 
     // Flap forward, combine reverse, and turn 180 degrees
-    setFlap(127);
-    setCombine(-127);
+    setIntake(-127);
     chassis.pid_turn_set(-285_deg, TURN_SPEED);
     chassis.pid_wait();
 
     // Drive forward 28 inches
     chassis.pid_drive_set(28_in, DRIVE_SPEED, true);
     chassis.pid_wait();
-    
-
-    // Reverse flap briefly, then toggle directions
-    setFlap(-127);
-    pros::delay(250);
-    setFlap(127);
-    pros::delay(250);
-    setFlap(-127);
-    setFlap(0);
-    pros::delay(250);
-    setFlap(127);
 
     DRIVE_SPEED == 95;
-
-    setFlap(-127);
-    pros::delay(250);
-    setFlap(127);
-    pros::delay(250);
-    setFlap(-127);
-    pros::delay(250);
-    setFlap(127);
-    pros::delay(250);
-    setFlap(-127);
-    pros::delay(250);
-    setFlap(127);
-    pros::delay(250);
-    setFlap(-127);
-    pros::delay(250);
-    setFlap(127);
 
    chassis.pid_turn_set(-108_deg, TURN_SPEED);
    chassis.pid_wait();
@@ -248,9 +127,6 @@ void blueLeftSide()
 
 void blueRightSide() { // 4 ring
   const int DRIVE_SPEED = 70;
-    // Spin flap forward initially
-    setFlap(127);
-    pros::delay(250);  // Wait for the action
 
     // Drive forward 30 inches
     chassis.pid_drive_set(-30_in, DRIVE_SPEED, true);
@@ -260,20 +136,9 @@ void blueRightSide() { // 4 ring
     pros::delay(350);
 
     // Reverse combine motor
-    setCombine(-127);
-    pros::delay(1000);
-
-    // Reverse flap for 1 second
-    setFlap(-127);
-    pros::delay(500);
-    setFlap(127);
-    pros::delay(500);
-    setFlap(-127);
-    pros::delay(500);
+    setIntake(-127);
 
     // Flap forward, combine reverse, and turn 180 degrees
-    setFlap(127);
-    setCombine(-127);
     chassis.pid_turn_set(285_deg, TURN_SPEED);
     chassis.pid_wait();
 
@@ -281,33 +146,7 @@ void blueRightSide() { // 4 ring
     chassis.pid_drive_set(28_in, DRIVE_SPEED, true);
     chassis.pid_wait();
 
-    // Reverse flap briefly, then toggle directions
-    setFlap(-127);
-    pros::delay(250);
-    setFlap(127);
-    pros::delay(250);
-    setFlap(-127);
-    setFlap(0);
-    pros::delay(250);
-    setFlap(127);
-
     DRIVE_SPEED == 95;
-
-    setFlap(-127);
-    pros::delay(250);
-    setFlap(127);
-    pros::delay(250);
-    setFlap(-127);
-    pros::delay(250);
-    setFlap(127);
-    pros::delay(250);
-    setFlap(-127);
-    pros::delay(250);
-    setFlap(127);
-    pros::delay(250);
-    setFlap(-127);
-    pros::delay(250);
-    setFlap(127);
 
    chassis.pid_turn_set(110_deg, TURN_SPEED);
    chassis.pid_wait();
@@ -324,21 +163,13 @@ void soloWp() //Scores 1 ring on alliance wall stake and 2 rings on alliance mob
   chassis.pid_turn_set(-85, TURN_SPEED); //turn -85 degrees
   chassis.pid_wait(); // wait for pid
 
-  setCombine(127); // spin combine to get ring on wall stake
-  pros::delay(1000); //wait 1000 miliseconds
-  setCombine(0); //stop combine
-
-  chassis.pid_drive_set(10_in, DRIVE_SPEED, true); // Drive forwards
-  chassis.pid_wait(); // wait for pid
-
 }
 void skills() //Auton for skills matches
 {
   const int DRIVE_SPEED = 100; // sets drive speed
-  setCombine(127); // spin combine in reverse to get ring on wall stake
-  pros::delay(1000); //wait 1000 milliseconds
+  setIntake(127); // spin combine in reverse to get ring on wall stake
 
-  setCombine(0); //stop combine
+  setIntake(0); //stop combine
 
   chassis.pid_drive_set(15_in, DRIVE_SPEED, true); //drive 15 inches
   chassis.pid_wait(); //wait for pid to finish
@@ -351,8 +182,6 @@ void skills() //Auton for skills matches
 
   clamp1.extend();  //extend clamp
   pros::delay(300); //wait 300 miliseconds
-
-  setFlap(127);
   
   chassis.pid_turn_set(-180_deg, TURN_SPEED); //turn 180 degrees
   chassis.pid_wait(); //wait for pid to finish
@@ -360,32 +189,21 @@ void skills() //Auton for skills matches
   chassis.pid_drive_set(20_in, DRIVE_SPEED, true); //drive 20 inches
   chassis.pid_wait(); //wait for pid to finish
 
-  setCombine(-127); // spin combine in reverse to get ring on mobile stake
+  setIntake(-127); // spin combine in reverse to get ring on mobile stake
   chassis.pid_turn_set(180_deg, TURN_SPEED); //turn 180 degrees
   chassis.pid_wait(); //wait for pid to finish
-  setFlap(-127);
-  pros::delay(100);  // Wait for the action
-  setFlap(127);
 
   chassis.pid_drive_set(20_in, DRIVE_SPEED, true); //drive 20 inches
   chassis.pid_wait(); //wait for pid to finish
 
   chassis.pid_turn_set(180_deg, TURN_SPEED); //turn 180 degrees
   chassis.pid_wait(); //wait for pid to finish
-
-  setFlap(-127);
-  pros::delay(100);  // Wait for the action
-  setFlap(127);
 
   chassis.pid_drive_set(20_in, DRIVE_SPEED, true); //drive 20 inches
   chassis.pid_wait(); //wait for pid to finish
 
   chassis.pid_turn_set(-180_deg, TURN_SPEED); //turn -180 degrees
   chassis.pid_wait(); //wait for pid to finish
-
-  setFlap(-127);
-  pros::delay(100);  // Wait for the action
-  setFlap(127);
 
   chassis.pid_drive_set(10_in, DRIVE_SPEED, true); //drive 10 inches
   chassis.pid_wait(); //wait for pid to finish
@@ -398,10 +216,6 @@ void skills() //Auton for skills matches
 
   chassis.pid_turn_set(40_deg, TURN_SPEED); //turn 40 degrees
   chassis.pid_wait(); //wait for pid to finish
-
-  setFlap(-127);
-  pros::delay(100);  // Wait for the action
-  setFlap(127);
 
   chassis.pid_drive_set(-10_in, DRIVE_SPEED, true); //drive backwards 10 inches
   chassis.pid_wait(); //wait for pid to finish
@@ -433,17 +247,15 @@ void test() // auton for testing purposes
     chassis.pid_turn_set(-85, TURN_SPEED); //turn -85 degrees
     chassis.pid_wait(); // wait for pid
 
-    setCombine(127); // spin combine to get ring on wall stake
+    setIntake(127); // spin combine to get ring on wall stake
     pros::delay(3000); //wait 3000 miliseconds
 
-    setCombine(0); //stop combine
+    setIntake(0); //stop combine
 }
 void autonTest() // auton for testing purposes
 {
 const int DRIVE_SPEED = 70; // set drive speed to 70
     // Spin flap forward initially
-    setFlap(127);
-    pros::delay(250);  // Wait for the action
 
     // Drive forward and get two rings
     chassis.pid_drive_set(-5_in, DRIVE_SPEED, true); //
@@ -452,19 +264,8 @@ const int DRIVE_SPEED = 70; // set drive speed to 70
     clamp1.extend();  //extend clamp
     pros::delay(350); // wait 350 miliseconds
 
-    setCombine(-127); // spin combine fwd at max speed
+    setIntake(-127); // spin combine fwd at max speed
     pros::delay(500); //wait 500 miliseconds 
-
-    setFlap(-127);
-    pros::delay(200);
-    setFlap(127);
-    pros::delay(200);
-    setFlap(-127);
-    pros::delay(200); 
-    setFlap(127);
-    pros::delay(200);
-    setFlap(-127);
-    pros::delay(200);
 
     chassis.pid_drive_set(-10_in, DRIVE_SPEED, true);
     chassis.pid_wait();
@@ -472,55 +273,18 @@ const int DRIVE_SPEED = 70; // set drive speed to 70
     chassis.pid_turn_set(-50_deg, TURN_SPEED);
     chassis.pid_wait();
 
-    setCombine(127);
-    setFlap(-127);
+    setIntake(127);
 
     chassis.pid_drive_set(43_in, DRIVE_SPEED, true);
     chassis.pid_wait();
 
-    setFlap(-127);
-    pros::delay(200);
-    setFlap(127);
-    pros::delay(200);
-    setFlap(-127);
-    pros::delay(200); 
-    setFlap(127);
-    pros::delay(200);
-    setFlap(-127);
-    pros::delay(200);
-    setFlap(127);
-    pros::delay(200);
-     setFlap(-127);
-    pros::delay(200);
-    setFlap(127);
-    pros::delay(200);
-    setFlap(-127);
-    pros::delay(200);
-    setFlap(127);
-    pros::delay(200);
-
     chassis.pid_turn_set(130_deg, TURN_SPEED);
     chassis.pid_wait();
-    
-
-    setFlap(-127);
-    pros::delay(200);
-    setFlap(127);
-    pros::delay(200);
-    setFlap(-127);
-    pros::delay(200);
-    setFlap(127);
-    pros::delay(200);
 
     chassis.pid_drive_set(-10_in, DRIVE_SPEED, true);
     chassis.pid_wait();
 
     pros::delay(500);
-
-    setFlap(-127);
-    pros::delay(200);
-    setFlap(127);
-    pros::delay(200);
 
     clamp1.retract();  
     pros::delay(350);
