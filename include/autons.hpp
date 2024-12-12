@@ -10,10 +10,10 @@ void blueLeftSide();
 void blueRightSide();
 void soloWp();
 void skills();
-void colorSensorTest();
 void test();
 void autonTest();
-void detect_red();
+void setAllianceRed();
+void setAllianceBlue();
 
 
 //tuner autons (Just leave these here)

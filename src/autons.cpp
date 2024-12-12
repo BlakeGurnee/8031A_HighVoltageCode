@@ -321,6 +321,15 @@ const int DRIVE_SPEED = 70; // set drive speed to 70
     chassis.pid_wait();
 }
 
+void setAllianceRed()
+{
+  alliance  = 1;
+}
+void setAllianceBlue()
+{
+  alliance = 2;
+}
+
 // add more normal autons here
 //
 //

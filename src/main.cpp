@@ -57,6 +57,8 @@ void initialize() {
     Auton("Auton for Blue right (or far) side of the field scores 2 rings on mobile goal and touches the ladder", blueRightSide),
     Auton("Auton for Solo Win Point", soloWp),
     Auton("Auton For Programming Skills Matches", skills),
+    Auton("Auton for setting the red alliance for drive test with optical sensor", setAllianceRed),
+    Auton("Auton for setting the blue alliance for drive test with optical sensor", setAllianceBlue),
 
     // Testing autons these are still in development and are probaly not ready to be used on the field yet if tesing auton or vision sensor un comment these:
     Auton("Auton for Autonomus Testing", test), 
@@ -140,7 +142,7 @@ void autonomous() {
 
 
 void opcontrol() {
-  /*
+  /* leaving this here just in case we ever need it again in the future
   pros::Vision vision_sensor (VISION_PORT);
 
   pros::vision_signature_s_t RED_SIG =
@@ -198,7 +200,7 @@ void opcontrol() {
     if (master.get_digital(DIGITAL_DOWN))
     {
       setIntake(127);
-      
+
       if (alliance = 1) { // 1 = red alliance so if red alliance run this
       hue = optical_sensor.get_hue(); //Gets hue from the optical sensor
         if (hue < 360) // If the hue is less than 360 (360 hue is the color blue) then intake red rings and reverse blue rings
