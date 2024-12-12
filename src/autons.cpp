@@ -16,6 +16,29 @@ const int SWING_SPEED = 95;
 ///
 // Constants
 ///
+
+/*
+//settings
+double kp = 0.0
+double ki = 0.0
+double kd = 0.0
+
+int error; //SensorValue - DesiredValue : position
+int prev_error; //Position 20 miliseconds ago
+int derivative;
+int total error;
+
+//Variables modified for use
+bool enableDrivePID = true;
+
+int drivePID(){
+  while(enableDrivePID){
+    prev_error = error;
+    pros::delay(200);
+  }
+}
+*/
+
 void default_constants() {
   chassis.pid_heading_constants_set(11, 0, 20);
   chassis.pid_drive_constants_set(20, 0, 100);
@@ -35,6 +58,7 @@ void default_constants() {
 
 void redLeftSide() // 4 ring
 {
+  alliance = 1;
   const int DRIVE_SPEED = 70;
 
   // Drive forward 30 inches
@@ -66,6 +90,7 @@ void redLeftSide() // 4 ring
 
 void redRightSide() // Auton for right (or far) side of the field scores 2 rings on mobile goal and touches the ladder
 {
+  alliance = 1;
   const int DRIVE_SPEED = 70;
 
   // Drive forward 30 inches
@@ -96,6 +121,7 @@ void redRightSide() // Auton for right (or far) side of the field scores 2 rings
 
 void blueLeftSide()
 {
+  alliance = 2;
   const int DRIVE_SPEED = 70;
     // Drive forward 30 inches
     chassis.pid_drive_set(-30_in, DRIVE_SPEED, true);
@@ -126,6 +152,7 @@ void blueLeftSide()
 }
 
 void blueRightSide() { // 4 ring
+  alliance = 2;
   const int DRIVE_SPEED = 70;
 
     // Drive forward 30 inches
@@ -166,6 +193,7 @@ void soloWp() //Scores 1 ring on alliance wall stake and 2 rings on alliance mob
 }
 void skills() //Auton for skills matches
 {
+  alliance = 1;
   const int DRIVE_SPEED = 100; // sets drive speed
   setIntake(127); // spin combine in reverse to get ring on wall stake
 

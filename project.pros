@@ -423,7 +423,7 @@
     "upload_options": {
       "description": "Main program with multiple autons and driving.",
       "icon": "pizza",
-      "slot": 3
+      "slot": 1
     },
     "use_early_access": false
   }

@@ -8,6 +8,7 @@
 #define VISION_PORT 12
 #define REDRING_SIG 1
 #define BLUERING_SIG 2
+double hue;
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -50,11 +51,11 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-    Auton("Auton for red left (or Near) side of the field scores 2 rings on mobile goal and touches the ladder", redLeftSide),
-    Auton("Auton for red right (or far) side of the field scores 2 rings on mobile goal and touches the ladder", redRightSide),
-    Auton("Auton for Blue left (or Near) side of the field scores 2 rings on mobile goal and touches te ladder", blueLeftSide),
+    Auton("Auton for Red left (or near) side of the field scores 2 rings on mobile goal and touches the ladder", redLeftSide),
+    Auton("Auton for Red right (or far) side of the field scores 2 rings on mobile goal and touches the ladder", redRightSide),
+    Auton("Auton for Blue left (or near) side of the field scores 2 rings on mobile goal and touches the ladder", blueLeftSide),
     Auton("Auton for Blue right (or far) side of the field scores 2 rings on mobile goal and touches the ladder", blueRightSide),
-    Auton("Auton for solo win point", soloWp),
+    Auton("Auton for Solo Win Point", soloWp),
     Auton("Auton For Programming Skills Matches", skills),
 
     // Testing autons these are still in development and are probaly not ready to be used on the field yet if tesing auton or vision sensor un comment these:
@@ -136,6 +137,8 @@ void autonomous() {
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
+
+
 void opcontrol() {
   /*
   pros::Vision vision_sensor (VISION_PORT);
@@ -195,10 +198,33 @@ void opcontrol() {
     if (master.get_digital(DIGITAL_DOWN))
     {
       setIntake(127);
+      
+      if (alliance = 1) { // 1 = red alliance so if red alliance run this
+      hue = optical_sensor.get_hue(); //Gets hue from the optical sensor
+        if (hue < 360) // If the hue is less than 360 (360 hue is the color blue) then intake red rings and reverse blue rings
+        {
+          setIntake(-127); //If the ring color is red the intake will run normally
+        }
+        else 
+        {
+          setIntake(127); //If the ring color is blue the intake will reverse
+        }
+        }
+        else if (alliance = 2) { // 2 = blue alliance so if blue alliance run this
+        hue = optical_sensor.get_hue(); //Gets hue from the optical sensor
+          if (hue > 0) // If the hue is greater than 0 (0 hue is the color red) then intake blue rings and reverse red rings
+          {
+            setIntake(-127);
+          }
+          else 
+          {
+            setIntake(127);
+          }
+      }
     }
     else if (master.get_digital(DIGITAL_UP))
     {
-      setIntake(-127);
+      setIntake(-127); 
     }
     else if (master.get_digital(DIGITAL_RIGHT))
     {
@@ -209,6 +235,9 @@ void opcontrol() {
     {
       clamp1.toggle();
     }
+
+    
+
  
     // . . .
 

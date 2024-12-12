@@ -10,4 +10,9 @@ extern pros::Motor hooks;
 extern pros::adi::Pneumatics clamp1;
 
 //Sensors
-extern pros::Vision vision;
+extern pros::Optical optical_sensor;
+extern pros::Rotation rotationSensor;
+
+
+//Variables
+extern int alliance;
