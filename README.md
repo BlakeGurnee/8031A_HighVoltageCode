@@ -8,9 +8,9 @@ Welcome to 8031A High Voltage's official codebase for the 2024 VEX Robotics "Hig
 
 We use Git and GitHub for version control, which allows us to:
 
-✅ Stay organized — Code is broken down into logical, well-labeled files.
-✅ Track changes — Revert to previous versions if issues arise.
-✅ Back up our work — Code is stored safely in the cloud to avoid data loss.
+- ✅ Stay organized — Code is broken down into logical, well-labeled files.
+- ✅ Track changes — Revert to previous versions if issues arise.
+- ✅ Back up our work — Code is stored safely in the cloud to avoid data loss.
 This process makes our development faster, more efficient, and highly collaborative. 🚀
 
 
