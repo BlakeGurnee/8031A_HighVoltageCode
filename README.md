@@ -67,6 +67,11 @@ Feature Branches: Every new feature or change starts in a new branch (like featu
 Pull Requests & Code Reviews: Code is reviewed before being merged into the main branch to ensure it works properly.
 Release Tags: We tag stable versions (like v1.0.0) to track our progress over time.
 You can check our commit history to see the evolution of our code and how we've solved key challenges. This approach ensures stability, efficiency, and teamwork.
+
+## 📕 Documentation
+
+[Documentation](https://blakegurnee.github.io/8031A_HighVoltageCode/)
+
 ## 📲 Contact Us
 
 For any questions or inquiries, feel free to reach out to Team 8031A High Voltage on our Instagram. We’re always excited to share our journey and learn from others!
