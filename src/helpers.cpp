@@ -1,9 +1,11 @@
 #include "main.h"
 
+
+
 void setIntake(int intakePower) 
 {
-    combine.move(intakePower);
-    hooks.move(intakePower);
+  combine.move(intakePower);
+  hooks.move(intakePower);
 }
 
 void clampSwitch()

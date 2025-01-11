@@ -197,36 +197,36 @@ void opcontrol() {
       autonomous();
     }
 
-    if (master.get_digital(DIGITAL_DOWN))
+    if (master.get_digital(DIGITAL_UP))
     {
-      setIntake(127);
+      setIntake(100);
 
       if (alliance = 1) { // 1 = red alliance so if red alliance run this
       hue = optical_sensor.get_hue(); //Gets hue from the optical sensor
-        if (hue < 360) // If the hue is less than 360 (360 hue is the color blue) then intake red rings and reverse blue rings
+        if (hue > 0) // If the hue is less than 360 (360 hue is the color blue) then intake red rings and reverse blue rings
         {
-          setIntake(-127); //If the ring color is red the intake will run normally
+          setIntake(100); //If the ring color is red the intake will run normally
         }
         else 
         {
-          setIntake(127); //If the ring color is blue the intake will reverse
+          setIntake(-100); //If the ring color is blue the intake will reverse
         }
         }
         else if (alliance = 2) { // 2 = blue alliance so if blue alliance run this
         hue = optical_sensor.get_hue(); //Gets hue from the optical sensor
-          if (hue > 0) // If the hue is greater than 0 (0 hue is the color red) then intake blue rings and reverse red rings
+          if (hue < 360) // If the hue is greater than 0 (0 hue is the color red) then intake blue rings and reverse red rings
           {
-            setIntake(-127);
+            setIntake(100); 
           }
           else 
           {
-            setIntake(127);
+            setIntake(-100);
           }
       }
     }
-    else if (master.get_digital(DIGITAL_UP))
+    else if (master.get_digital(DIGITAL_DOWN))
     {
-      setIntake(-127); 
+      setIntake(100); 
     }
     else if (master.get_digital(DIGITAL_RIGHT))
     {
@@ -236,6 +236,15 @@ void opcontrol() {
     if (master.get_digital_new_press(DIGITAL_R1))
     {
       clamp1.toggle();
+    }
+
+    if (master.get_digital(DIGITAL_L1))
+    {
+      rotation_sensor.set_position(180);
+    }
+    if (master.get_digital(DIGITAL_L2))
+    {
+      rotation_sensor.set_position(0);
     }
 
     
