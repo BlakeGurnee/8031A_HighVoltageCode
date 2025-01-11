@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8031A High Voltage - 2024 “High Stakes” Code Repository</title>
+    <style>
+        :root {
+            --primary-color: #5c67f2;
+            --secondary-color: #ff6f61;
+            --background-color: #f4f4f9;
+            --text-color: #333;
+            --header-bg: #222;
+            --card-bg: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--header-bg);
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header img {
+            width: 100%;
+            max-width: 2560px;
+            height: auto;
+            border-radius: 0;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .feature {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            flex: 1 1 calc(33.333% - 20px);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .file-structure {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .file {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+       .section p {
+         text-align: center;
+         margin-bottom: 1rem;
+       }
+      
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background: var(--header-bg);
+            color: #fff;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item h3 {
+            color: var(--primary-color);
+        }
+
+        .faq-item p {
+            margin-top: 1rem;
+        }
+        .contact-btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="8031A High Voltage Logo">
+    <h1>8031A High Voltage</h1>
+    <p>2024 “High Stakes” Code Repository</p>
+</header>
+
+<main class="container">
+
+    <section class="section">
+        <h2>About Our Codebase</h2>
+        <p>Welcome to 8031A High Voltage’s official codebase for the 2024 VEX Robotics “High Stakes” competition. This repository contains the source code for our robot, written in C++ using the PROS development environment and the EZ Template.</p>
+    </section>
+
+    <section class="section">
+        <h2>🚀 Key Features</h2>
+        <div class="features">
+            <div class="feature">
+                <h3>Ring Detection</h3>
+                <p>Uses a optical sensor to identify and categorize rings for precision placement.</p>
+            </div>
+            <div class="feature">
+                <h3>PID Control</h3>
+                <p>Ensures accurate and consistent movement of motors for precise alignment and control.</p>
+            </div>
+            <div class="feature">
+                <h3>Sensor Integration</h3>
+                <p>Optical Sensor, Inertial Sensor, Rotation Sensor, and Distance Sensor for enhanced performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>📚 File Structure</h2>
+        <div class="file-structure">
+            <div class="file">
+                <h3>📂 src/</h3>
+                <p><code>main.cpp</code> - Main entry point for our robot's code</p>
+            </div>
+            <div class="file">
+                <h3>📂 include/</h3>
+                <p><code>globals.hpp</code> - Header file for global variables and constants</p>
+            </div>
+            <div class="file">
+                <h3>📂 docs/</h3>
+                <p>Documentation and notes for the codebase</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>💡 FAQ</h2>
+        <div class="faq-item">
+            <h3>1️⃣ Are the programs cleanly written and easy to follow?</h3>
+            <p>Yes, our code is clean, organized, and well-commented for easy navigation and understanding.</p>
+        </div>
+        <div class="faq-item">
+            <h3>2️⃣ Is the programming effective for Qualification Matches and Skills Challenges?</h3>
+            <p>Absolutely. Our autonomous routines are optimized to handle scoring paths for consistent performance.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>📈 Version Control with GitHub</h2>
+        <p>We use GitHub for version control, feature branches, pull requests, and code reviews to ensure stability and teamwork.</p>
+    </section>
+
+    <section class="section">
+        <h2>📲 Contact Us</h2>
+        <p>For questions, contact Team 8031A High Voltage on Instagram. We’re happy to share our journey and learn from others!</p>
+        <div class="contact-btn-container">
+        <a class="btn" href="https://www.instagram.com/highvoltage_8031a/" target="_blank">Contact Us</a>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2024 8031A High Voltage. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
