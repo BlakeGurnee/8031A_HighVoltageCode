@@ -38,17 +38,29 @@ Our robot is equipped with a diverse array of sensors to enhance the robot's per
   - 🔵 Inertial Sensor — Keeps track of orientation and ensures that turns are accurate.
   - 🔵 Rotation Sensor — Measures our ladybrown's position for precision movements.
   - 🔵 Distance Sensor  — Detects obstacles and helps with autonomous alignment.
-    
 
-💪 Autonomous Skills Path Optimization
+
+## 🛠️ Autonomous Selector
+
+We have implemented a user-friendly autonomous selector for flexibility during matches. This feature allows us to:
+
+- Choose from multiple preprogrammed autonomous routines directly from the robot’s brain.
+
+- Customize the strategy based on the starting position and opponent’s layout.
+
+- Have easy access to multiple autons all on the same program.
+
+The selector interface is intuitive, ensuring smooth operation even under time constraints.
+
+## 💪 Autonomous Skills Path Optimization
 
 To maximize performance in autonomous skills challenges, we use Pure Pursuit path-following algorithms. This ensures:
 
-Highly accurate path tracking, even with complex curves.
+- Highly accurate path tracking, even with complex curves.
 
-Optimal speed adjustments for the fastest possible completion times.
+- Optimal speed adjustments for the fastest possible completion times.
 
-Reliable and consistent execution across multiple runs.
+- Reliable and consistent execution across multiple runs.
 
 
 ## 📚 File Structure
