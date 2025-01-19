@@ -4,14 +4,18 @@
 
 # 📢 8031A High Voltage - 2024 "High Stakes" Code Repository
 
-Welcome to 8031A High Voltage's official codebase for the 2024 VEX Robotics "High Stakes" competition. This repository contains the source code for our robot, written in C++ using the PROS development environment and the EZ Template.
+Welcome to the official codebase for 8031A High Voltage's robot in the 2024 VEX Robotics competition, "High Stakes." Here lies the source code for our robot, written in C++ using the PROS development environment and Lemlib Template.
 
-We use Git and GitHub for version control, which allows us to:
+We use Git and GitHub for version control, allowing us to:
 
-- ✅ Stay organized — Code is broken down into logical, well-labeled files.
-- ✅ Track changes — Revert to previous versions if issues arise.
-- ✅ Back up our work — Code is stored safely in the cloud to avoid data loss.
-This process makes our development faster, more efficient, and highly collaborative. 🚀
+- ✅ Organize — Our code is divided into logical, clearly-named files.
+
+- ✅ Track changes — Easily revert to previous versions if something goes wrong.
+
+- ✅ Back up our work: Our code is safely stored in the cloud so it doesn't get lost. It makes our development way faster, highly efficient, and truly collaborative.
+
+
+ It makes our development faster, more efficient, and more collaborative. 🚀
 
 
 ## 🚀 Key Features
@@ -20,18 +24,31 @@ Our robot is equipped with advanced features to dominate the "High Stakes" compe
 
 ## 🎯 Ring Detection
 
-Uses an optical sensor to identify and categorize rings for precision placement.
+This uses an optical sensor for ring detection and classification for accurate placement.
+
 ## 🔄 PID Control
 
-Implements Proportional, Integral, and Derivative control to ensure accurate motor movements and alignment.
+Proportional, Integral, and Derivative control ensures accurate motor movements and alignment.
+
 ## 🧠 Sensor Integration
 
-Our robot uses multiple sensors to enhance its performance:
+Our robot is equipped with a diverse array of sensors to enhance the robot's performance:
 
-  - 🔵 Optical Sensor - For sorting out wrong color rings.
-  - 🔵 Inertial Sensor — To track orientation and ensure accurate turns.
-  - 🔵 Rotation Sensor — Measures position for precision movements.
+  - 🔵 Optical Sensor - To sort out wrong color rings.
+  - 🔵 Inertial Sensor — Keeps track of orientation and ensures that turns are accurate.
+  - 🔵 Rotation Sensor — Measures our ladybrown's position for precision movements.
   - 🔵 Distance Sensor  — Detects obstacles and helps with autonomous alignment.
+    
+
+💪 Autonomous Skills Path Optimization
+
+To maximize performance in autonomous skills challenges, we use Pure Pursuit path-following algorithms. This ensures:
+
+Highly accurate path tracking, even with complex curves.
+
+Optimal speed adjustments for the fastest possible completion times.
+
+Reliable and consistent execution across multiple runs.
 
 
 ## 📚 File Structure
@@ -55,7 +72,7 @@ To keep our project maintainable and easy to navigate, we’ve organized the fil
 
 #### 🔹 Are the programs cleanly written, well-commented, and easy to follow?
 
-Yes! Our code is clean, organized, and well-commented. Each major section of the code is properly labeled, making it easy for new and experienced team members to understand. We follow a modular design approach, separating logic into dedicated files for autonomous routines, global variables, and helper functions.
+Yes! Our code is clean, well-organized, and well-documented. Every major section of the code is labeled as such, so that it's easier for new or advanced members to look at and understand. We also apply modular design by separating our logic into dedicated files for autonomous routines, global variables, and helper functions.
 
 #### 🔹 Is the programming effective at solving game challenges for Qualification Matches and Autonomous Skills Challenges?
 
@@ -78,7 +95,7 @@ How we use GitHub for version control:
 
 - 🌿 Feature Branches: Every new feature or change starts in a new branch (like feature/PID-tuning) to avoid disrupting the main code.
 - 🔍 Pull Requests & Code Reviews: Code is reviewed before being merged into the main branch to ensure it works properly.
-- 🏷️ Release Tags: We tag stable versions (like v1.0.0) to track our progress over time.
+- 🏷️ Release Tags: We tag stable versions (such as: v1.0.0) so we can track our progress over time.
 
 🕵️‍♂️ Check our commit history to see how our code has evolved to solve key challenges.
 
@@ -88,6 +105,5 @@ How we use GitHub for version control:
 
 ## 📲 Contact Us
 
-Have questions, suggestions, or just want to connect? Reach out to us on Instagram!
-We’re always happy to share our journey, learn from others, and inspire the next generation of robotics champions.
+Curious about anything, have a suggestion, or want to connect? Feel free to hit us up on Instagram! We're always keen on sharing our journey, learning from others, and inspiring the next generation of robotics champions.
 
