@@ -2,9 +2,9 @@
 ![Logo](https://i.ibb.co/9wBYq0C/Screenshot-2024-12-08-204044.png)
 
 
-# 📢 8031A High Voltage - 2024 "High Stakes" Code Repository
+# 📢 8031A High Voltage - 2024 - 2025 "High Stakes" Code Repository
 
-Welcome to the official codebase for 8031A High Voltage's robot in the 2024 VEX Robotics competition, "High Stakes." Here lies the source code for our robot, written in C++ using the PROS development environment and Lemlib Template.
+Welcome to the official codebase for 8031A High Voltage's robot in the 2024 - 2025 VEX Robotics competition, "High Stakes." Here lies the source code for our robot, written in C++ using the PROS development environment and Lemlib Template.
 
 We use Git and GitHub for version control, allowing us to:
 
