@@ -1,0 +1,22 @@
+version: 2
+
+# Build configurations
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.12"  # Corrected Python version
+
+# Define the Sphinx documentation builder
+sphinx:
+  configuration: docs/conf.py  # Path to Sphinx configuration file
+
+# Python dependencies
+python:
+  install:
+    - requirements: docs/requirements.txt  # Install dependencies from requirements file
+
+# Supported output formats
+formats:
+  - htmlzip
+  - pdf
+  - epub
