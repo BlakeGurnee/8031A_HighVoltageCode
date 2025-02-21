@@ -1,7 +1,5 @@
 #include "main.h"
-#define VISION_PORT 12
-#define REDRING_SIG 1
-#define BLUERING_SIG 2
+
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!

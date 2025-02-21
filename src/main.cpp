@@ -5,25 +5,94 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define VISION_PORT 12
-#define REDRING_SIG 1
-#define BLUERING_SIG 2
 double hue;
+bool intakeActive = false;
+
+int autonSelected = 0; // 0 = no auton selected
+
+const int numStates = 3;
+int states[numStates] = {0, 25, 195};
+int currentState = 0;
+int target = 0;
+
+void nextState() {
+    currentState += 1;
+    if (currentState == numStates) {
+        currentState = 0;
+    }
+    target = states[currentState];
+}
+
+void liftControl() {
+    double kp = 3.15;
+    //double error = target - rotation_sensor.get_position();
+    //double velocity = kp * error;
+   // ladyBrown.move(velocity);
+   ladyBrown.move(kp * (target - (rotation_sensor.get_position()/100.0)));
+}
+
+rd_view_t *image_view = rd_view_create("Image");
+
+
+rd::Selector selector({
+    {"Red Left", redLeftSide},
+    {"Red Right", redRightSide},
+    {"Blue Left", blueLeftSide},
+    {"Blue Right", blueRightSide},
+    {"Skills", skills}
+});
+
+rd::Console console;
+
+rd::Image image("S/usd/logo.bin", "Team Logo");
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
+// Controller
+pros::Controller controller(pros::E_CONTROLLER_MASTER);
+
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
     {-3, -2, -20},     // Left Chassis Ports (negative port will reverse it!)
-    {1, 5, 10},  // Right Chassis Ports (negative port will reverse it!)
+    {1, 5, 9},  // Right Chassis Ports (negative port will reverse it!)
 
     7,      // IMU Port
-    4.125,  // Wheel Diameter  (Remember, 4" wheels without screw holes are actually 4.125!)
+    275,  // Wheel Diameter  (Remember, 4" wheels without screw holes are actually 4.125!)
     360);   // Wheel RPM
+
+
+    void colorSortRed() {
+    if (intakeActive) {
+        optical_sensor.set_led_pwm(100);
+        // Use a single check without a blocking infinite loop.
+        double hue = optical_sensor.get_hue();
+        if ((hue < 10 || hue > 355)) {
+            setIntake(0);
+            pros::delay(1000);
+        }
+    }
+    else {
+        setIntake(0);
+    }
+}
+
+void colorSortBlue() {
+    if (intakeActive) {
+        setIntake(-115);
+        double hue = optical_sensor.get_hue();
+        if ((200 < hue && hue < 240)) {
+            setIntake(0);
+            pros::delay(1000);
+        }
+    }
+    else {
+        setIntake(0);
+    }
+}
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -33,9 +102,36 @@ ez::Drive chassis(
  */
 void initialize() {
   // Print our branding over your terminal :D
-  ez::ez_template_print();
-
+  
   pros::delay(500);  // Stop the user from doing anything while legacy ports configure
+
+  console.println("Console inititalized!");
+  console.printf("System time: %d\n", pros::millis());
+
+  rotation_sensor.reset_position();
+
+    // Launch the lift control task with proper yielding
+    pros::Task liftControlTask([]{
+        while (true) {
+            liftControl();
+            pros::delay(10);
+        }
+    });
+
+    // Launch the color sort task with a delay in each loop iteration
+    /*
+    pros::Task colorSortTask([]{
+        while (true) {
+            if (alliance == 1) {
+                colorSortRed();
+            }
+            else if (alliance == 2) {
+                colorSortBlue();
+            }
+            pros::delay(50); // Yield to allow other tasks to run
+        }
+    });
+    */
 
   // Configure your chassis controls
   chassis.opcontrol_curve_buttons_toggle(true);  // Enables modifying the controller curve with buttons on the joysticks
@@ -49,6 +145,7 @@ void initialize() {
   // chassis.opcontrol_curve_buttons_left_set(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);  // If using tank, only the left side is used.
   // chassis.opcontrol_curve_buttons_right_set(pros::E_CONTROLLER_DIGITAL_Y, pros::E_CONTROLLER_DIGITAL_A);
 
+  /*
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
     Auton("Auton for Red left (or near) side of the field scores 2 rings on mobile goal and touches the ladder", redLeftSide),
@@ -74,10 +171,10 @@ void initialize() {
     Auton("turn 360", turn_360),
     Auton("turn back", turnBack),
   });
+  */
 
   // Initialize chassis and auton selector
   chassis.initialize();
-  ez::as::initialize();
   master.rumble(".");
 }
 
@@ -123,7 +220,8 @@ void autonomous() {
   chassis.drive_brake_set(MOTOR_BRAKE_HOLD);  // Set motors to hold.  This helps autonomous consistency
   setIntake(0);
   
-  ez::as::auton_selector.selected_auton_call();  // Calls selected auton from autonomous selector
+  //ez::as::auton_selector.selected_auton_call();  // Calls selected auton from autonomous selector
+  selector.run_auton();
 }
 
 /**
@@ -142,17 +240,6 @@ void autonomous() {
 
 
 void opcontrol() {
-  /* leaving this here just in case we ever need it again in the future
-  pros::Vision vision_sensor (VISION_PORT);
-
-  pros::vision_signature_s_t RED_SIG =
-    pros::Vision::signature_from_utility(REDRING_SIG, 5549, 9289, 7419, -881, -445, -663, 0.8, 0);
-  vision_sensor.set_signature(REDRING_SIG, &RED_SIG);
- pros::vision_signature_s_t BLUE_SIG =
-    pros::Vision::signature_from_utility(BLUERING_SIG, -4193, -3521, -3857, 2507, 7775, 5141, 0.6, 0);
- vision_sensor.set_signature(BLUERING_SIG, &BLUE_SIG);
- */
-
 
   // This is preference to what you like to drive on
   pros::motor_brake_mode_e_t driver_preference_brake = MOTOR_BRAKE_COAST;
@@ -160,8 +247,6 @@ void opcontrol() {
   chassis.drive_brake_set(driver_preference_brake);
 
   while (true) {
-     //detect_ring();  // Call the detection function continuously in operator control
-     pros::delay(20);      // Delay to prevent overload
 
     // PID Tuner
     // After you find values that you're happy with, you'll have to set them in auton.cpp
@@ -199,37 +284,18 @@ void opcontrol() {
 
     if (master.get_digital(DIGITAL_UP))
     {
-      setIntake(100);
-
-      if (alliance = 1) { // 1 = red alliance so if red alliance run this
-      hue = optical_sensor.get_hue(); //Gets hue from the optical sensor
-        if (hue > 0) // If the hue is less than 360 (360 hue is the color blue) then intake red rings and reverse blue rings
-        {
-          setIntake(100); //If the ring color is red the intake will run normally
-        }
-        else 
-        {
-          setIntake(-100); //If the ring color is blue the intake will reverse
-        }
-        }
-        else if (alliance = 2) { // 2 = blue alliance so if blue alliance run this
-        hue = optical_sensor.get_hue(); //Gets hue from the optical sensor
-          if (hue < 360) // If the hue is greater than 0 (0 hue is the color red) then intake blue rings and reverse red rings
-          {
-            setIntake(100); 
-          }
-          else 
-          {
-            setIntake(-100);
-          }
-      }
+      intakeActive = true;
+      //colorSortRed();
+      setIntake(-127);
     }
     else if (master.get_digital(DIGITAL_DOWN))
     {
-      setIntake(100); 
+      intakeActive = true;
+      setIntake(115);
     }
     else if (master.get_digital(DIGITAL_RIGHT))
     {
+      intakeActive = false;
       setIntake(0);
     }
 
@@ -238,13 +304,12 @@ void opcontrol() {
       clamp1.toggle();
     }
 
-    if (master.get_digital(DIGITAL_L1))
-    {
-      rotation_sensor.set_position(180);
-    }
-    if (master.get_digital(DIGITAL_L2))
-    {
-      rotation_sensor.set_position(0);
+     if (controller.get_digital_new_press(DIGITAL_Y)) {
+            tipper.toggle();
+      }
+
+    if (controller.get_digital_new_press(DIGITAL_L1)) {
+          nextState();
     }
 
     
